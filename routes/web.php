@@ -15,4 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 route::get ('/santri','santricontroller@index');
-route::post('/santri/create','santriController@index');
+route::post('/santri/create','santriController@create');
+route::get('/santri/{id}/edit','santriController@edit');
+route::post('/santri/{id}/update','santriController@update');
+route::get('/santri/{id}/delete','santriController@delete');

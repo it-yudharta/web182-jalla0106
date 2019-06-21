@@ -13,7 +13,25 @@ class santricontroller extends Controller
     }
     public function create(Request $request)
     {
-       return $request->all();
+       \App\santri::create($request->all());
+       return redirect('/santri')->with('sukses','Data berhasil diinput');
        
+    }
+    public function edit($id)
+    {
+        $santri = \App\santri::find($id);
+        return view('santri/edit',['santri' => $santri]);
+    }
+    public function update(Request $request,$id)
+    {
+        $santri = \App\santri::find($id);
+        $santri->update($request->all()); 
+        return redirect('/santri')->with('sukses','Data berhasil diupdate');
+    }
+    public function delete($id)
+    {
+        $santri = \App\santri::find($id);
+        $santri->delete($santri);
+        return redirect('/santri')->with('sukses','Data berhasil dihapus');
     }
 }
